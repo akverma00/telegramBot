@@ -38,9 +38,18 @@ async def send_to_groups(event):
         except Exception as e:
             logger.error(f"Failed to send message to chat ID {chat_id}: {e}")
 
+# Function that ignores messages constains http and @ in the event.message.message
+def isMessageValidated(event):
+    if 'http' in event.message.message or '@' in event.message.message:
+        return False
+    return True
+
 @client.on(events.NewMessage(chats=SOURCE_CHAT_IDS))
 async def handler(event):
-    await send_to_groups(event)
+    if isMessageValidated(event):
+        await send_to_groups(event)
+    else:
+        logger.info("Message contains http or @, ignored")
 
 def start_bot():
     with client:
