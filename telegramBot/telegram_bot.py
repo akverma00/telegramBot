@@ -16,10 +16,7 @@ SESSION_NAME = 'session_name'
 # the corresponding value is a list of target chat IDs to which messages from the source chat should be forwarded.
 SOURCE_TO_TARGET_MAP = {
     -1002008905623: [
-        -1001945508703,
         -1001833328420,
-        -1001905014374,
-        -1002121131434,
         -1002133513866,
         -1002056442424
     ],
@@ -30,6 +27,10 @@ SOURCE_TO_TARGET_MAP = {
         -1002121131434,
         -1002133513866,
         -1002056442424
+    ],
+    -1001985321961: [
+	-1001945508703,
+	-1002056442424
     ]
 }
 
