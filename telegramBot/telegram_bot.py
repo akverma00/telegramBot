@@ -29,7 +29,7 @@ class TelegramBot:
         self.client.on(events.NewMessage(chats=list(self.constants.SOURCE_TO_TARGET_MAP.keys())))(self.handler)
 
     async def send_to_groups(self, event):
-        for chat_id in SOURCE_TO_TARGET_MAP.get(event.chat_id):
+        for chat_id in self.constants.SOURCE_TO_TARGET_MAP.get(event.chat_id):
             try:
                 await self.client.send_message(chat_id, event.message)
                 self.logger.info(f"Message forwarded to chat ID {chat_id}")
